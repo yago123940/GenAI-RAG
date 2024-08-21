@@ -2,41 +2,34 @@ import requests
 import os
 import json
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv("config.env")
 
-
-def format_list_as_json(list):
-
-    #format list as json
-    json_list = []
-    for item in list:
-        json_list.append(json.dumps(item))
-
-    return json_list
 
 
 
 def get_embeddings(input_list):
 
-    json_input = format_list_as_json(input_list)
+    formatted_data = [{"text": item} for item in input_list]
+
+    # Convert to JSON string
+    json_string = json.dumps(formatted_data)
+    print(json_string)
 
     url = 'https://api.jina.ai/v1/embeddings'
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer '+ os.getenv('JINA_TOKEN')
+        'Authorization': 'Bearer '+ str(os.getenv('JINA_TOKEN'))
     }
 
     data = {
         "model": "jina-clip-v1",
         "normalized": True,
         "embedding_type": "float",
-        "input": [
-            json_input
-            #expected format: {"text": "A blue cat"}
-        ]
+        "input":json_string
+        #expected format: {"text": "A blue cat"}
     }
 
     response = requests.post(url, headers=headers, json=data)
-    print(response)
+    print(response.text)
 
-    return response
+    return response.text
