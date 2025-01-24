@@ -15,7 +15,7 @@ def singlestore_auth():
         user_ss
         + ":"
         + password_ss
-        + "@svc-3482219c-a389-4079-b18b-d50662524e8a-shared-dml.aws-virginia-6.svc.singlestore.com:3333/db_yago_3770b"
+        + "@svc-3482219c-a389-4079-b18b-d50662524e8a-shared-dml.aws-virginia-6.svc.singlestore.com:3333/atlas1"
     )
     return conn
 
