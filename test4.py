@@ -52,14 +52,14 @@ llm = ChatBedrock(
     model_id="amazon.nova-lite-v1:0",
     model_kwargs={
         "temperature": 0.1,
-        "max_tokens": 2048
+        "max_tokens": 5120
     },
     region_name="us-east-1"  # Change to your region
 )
 # Cell 8: Create custom prompt template
 prompt_template = """Use the following context to answer the question at the end. 
 If you don't know the answer based on the context, just say that you don't know, don't try to make up an answer.
-Always cite the relevant parts of the context in your answer.
+Always cite the relevant parts of the context in your answer. Answer in Portuguese.
 
 Context: {context}
 
