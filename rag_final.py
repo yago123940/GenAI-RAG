@@ -23,7 +23,7 @@ embeddings = BedrockEmbeddings(
 )
 # Cell 5: Load and process PDF
 # Specify your PDF file path
-pdf_path = "relatorio_BTLG11.pdf"  # Change this to your PDF file path
+pdf_path = "./documentos_pdf/relatorio_BTLG11.pdf"  # Change this to your PDF file path
 
 # Load PDF
 loader = PyPDFLoader(pdf_path)
